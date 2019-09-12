@@ -282,7 +282,10 @@ class ProxyHandler(WebSocketHandlerMixin, IPythonHandler):
     def proxy_request_options(self):
         '''A dictionary of options to be used when constructing
         a tornado.httpclient.HTTPRequest instance for the proxy request.'''
-        return dict(follow_redirects=False)
+        return dict(
+            follow_redirects=False,
+            request_timeout=60,
+        )
 
     def check_xsrf_cookie(self):
         '''
